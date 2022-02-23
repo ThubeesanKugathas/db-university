@@ -71,3 +71,12 @@ GROUP BY `teachers`.`id`;
 
 -- 7 BONUS: Selezionare per ogni studente quanti tentativi d'esame ha sostenuto per 
 -- superare ciascuno dei suoi esami
+SELECT `students`.`id`, `students`.`name`, `students`.`surname`, `exams`.`course_id`, `courses`.`name`, COUNT(*) AS 'given_exams'
+FROM `students`
+JOIN `exam_student`
+	ON `students`.`id` = `exam_student`.`student_id`
+JOIN `exams`
+	ON `exam_student`.`exam_id` = `exams`.`id`
+JOIN `courses`
+	ON `exams`.`course_id` = `courses`.`id`
+GROUP BY `students`.`id`, `exams`.`course_id`;
