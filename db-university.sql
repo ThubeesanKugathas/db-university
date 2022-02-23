@@ -27,7 +27,7 @@ WHERE `cfu` > 10;
 -- 3 Selezionare tutti gli studenti che hanno più di 30 anni
 SELECT *
 FROM `students`
-WHERE (YEAR(CURRENT_TIMESTAMP) - YEAR(`date_of_birth`)) > 30;
+WHERE TIMESTAMPDIFF(YEAR, `date_of_birth`, CURDATE()) > 30;
 
 
 
